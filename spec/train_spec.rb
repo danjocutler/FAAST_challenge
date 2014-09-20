@@ -31,4 +31,8 @@ describe Train do
 		expect { train.add(coach) }.to raise_error "Coach capacity already full"
 	end
 
+	it "should not release a coach if it's empty" do
+		expect { train.release(coach) }.to raise_error "You have no coaches to release!"
+	end
+
 end

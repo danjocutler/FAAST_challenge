@@ -10,10 +10,6 @@ class Train
 		@capacity ||= DEFAULT_CAPACITY
 	end
 
-	def capacity=(value)
-		@capacity = value
-	end
-
 	def coach_count()
 		coaches.count
 	end
@@ -24,11 +20,16 @@ class Train
 	end
 
 	def release(coach)
+		raise "You have no coaches to release!" if empty?
 		coaches.delete(coach)
 	end
 
 	def full?()
 		coach_count == capacity
+	end
+
+	def empty?()
+		coach_count == (0)
 	end
 
 end
