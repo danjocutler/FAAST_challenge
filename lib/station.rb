@@ -42,5 +42,4 @@ class Station
 	def alight(passenger)
 		pax.delete(passenger)
 	end
-
 end
