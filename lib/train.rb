@@ -1,13 +1,13 @@
 class Train
 
-	DEFAULT_CAPACITY = 6
+	COACH_CAPACITY = 6
 
 	def coaches
 		@coaches ||= []
 	end
 
 	def capacity
-		@capacity ||= DEFAULT_CAPACITY
+		@capacity ||= COACH_CAPACITY
 	end
 
 	def coach_count()

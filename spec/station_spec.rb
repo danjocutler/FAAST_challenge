@@ -28,7 +28,7 @@ describe Station do
 		expect(station.train_count).to eq(0)
 	end
 
-	it "MUST only allow one train in a station at a time" do
+	it "should only allow one train in a station at a time" do
 		station.capacity.times {station.accept(train) }
 		expect { station.accept(train) }.to raise_error "Please wait for other train to leave the station"
 	end
