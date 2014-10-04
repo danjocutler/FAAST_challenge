@@ -4,16 +4,19 @@ describe Station do
 	
 	let(:station) {Station.new}
 	let(:train) {double :train}
-	let(:passenger) {double :passenger}
+	let(:passenger) {double :passenger, enough?: true}
+	let(:poor_pax) {double :passenger, enough?: false}	
 
-	# it "should only accept passengers who have min. balance (£2.00)" do
-	# 	rich_pax, poor_pax = Passenger.new, Passenger.new
-	# 	poor_pax.steal!
-	# 	station.add(rich_pax)
-	# 	station.add(poor_pax)
-	# 	expect(station.pax_good).to eq([rich_pax])
-	# end
+	it "should only accept passengers who have min. balance (£2.00)" do
+		station.add(passenger) 
+		expect(station.passenger_count).to eq(1)
+		end
 
+	it "should raise error if passenger with less than minimum balance tries to enter the station" do
+		expect { station.add(poor_pax) }.to raise_error "Your balance is too low. Please top up"
+	end
+
+		
 	it "should alight passengers" do
 		station.add(passenger)
 		station.alight(passenger)

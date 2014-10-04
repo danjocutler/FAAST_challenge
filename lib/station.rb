@@ -32,6 +32,7 @@ class Station
 	end
 
 	def add(passenger)
+		raise "Your balance is too low. Please top up" if passenger.enough? == false
 		pax << passenger
 	end
 
@@ -42,4 +43,5 @@ class Station
 	def alight(passenger)
 		pax.delete(passenger)
 	end
+
 end

@@ -27,4 +27,8 @@ class Coach
 		passenger_count == capacity
 	end
 
+	def receive_passenger(station, passenger)
+		add(station.alight(passenger))
+	end
+
 end

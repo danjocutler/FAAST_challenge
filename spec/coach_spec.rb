@@ -8,6 +8,7 @@ describe Coach  do
 
 	let(:coach) {Coach.new}
 	let(:passenger) {double :passenger}
+	let(:station) { double :station }
 
 	it "should accept passengers" do
 		coach.add(passenger)
@@ -29,5 +30,11 @@ describe Coach  do
 		fill_coach coach
 		expect {coach.add(passenger) }.to raise_error "Sorry. This coach is already full"
 	end
-	
+
+	it "should receive passengers from the station" do
+		allow(station).to receive(:alight).with passenger
+		coach.receive_passenger(station, passenger)
+		expect(coach.passenger_count).to eq(1)
+	end
+
 end
