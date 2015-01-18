@@ -1,6 +1,5 @@
 class Passenger
 
-
 	def initialize
 		top_up!
 	end
